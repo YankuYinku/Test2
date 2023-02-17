@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90002",
+          "Value": "Uw aanmelding is tijdelijk geblokkeerd vanwege recente activiteiten die aan uw account zijn gekoppeld."
+        }
+      ]
+    }
+  ]
+}

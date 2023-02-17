@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90001",
+          "Value": "Uw aanmelding is geblokkeerd. De wetten voor privacy en onlineveiligheid in uw land/regio verhinderen toegang tot accounts die eigendom zijn van kinderen."
+        }
+      ]
+    }
+  ]
+}
