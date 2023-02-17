@@ -1,0 +1,11 @@
+import { Activity, ActivityFn } from "single-spa";
+import { ICurrentUserData } from "@apetito/portal-sdk-common";
+export declare function ifPathMatches(path: string): ActivityFn;
+export declare function ifPathEquals(path: string): ActivityFn;
+export declare function ifLoggedIn(): ActivityFn;
+export declare function ifNotLoggedIn(): ActivityFn;
+export declare function ifHasPermission(requestedPermissions: string[], userDataLoader: () => ICurrentUserData): ActivityFn;
+export declare function hasUserData(userDataLoader: () => ICurrentUserData): ActivityFn;
+export declare function combineTwoActivities(activity1: Activity, activity2: Activity): ActivityFn;
+export declare function combineActivities(...items: Activity[]): ActivityFn;
+export declare function combineTwoActivityFunctions(activityFunction1: ActivityFn, activityFunction2: ActivityFn): ActivityFn;

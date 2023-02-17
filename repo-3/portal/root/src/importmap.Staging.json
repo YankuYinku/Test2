@@ -1,0 +1,22 @@
+{
+  "imports": {
+    "@apetito/root-config": "/apetito-root-config.js",
+    "@apetito/portal-sdk-common": "/sdk/common/apetito-portal-sdk-common.js",
+    "@apetito/dashboard": "/apps/dashboard/js/app.js",
+    "@apetito/mini-basket": "/apps/mini-basket/js/app.js",
+    "@apetito/basket": "https://shared-partnerportalbasket-client.stage.apebs.de/js/app.js",
+    "@apetito/navigation": "/apps/navigation/js/app.js",
+    "@apetito/product-catalog": "/apps/product-catalog/js/app.js",
+    "@apetito/menuplanner-dashboard": "https://api.stage.apebs.de/menuplanner/dashboardclient/js/app.js",
+    "@apetito/user-account": "/apps/user-account/js/app.js",
+    "@apetito/user-account-details": "/apps/user-account-details/js/app.js",
+    "@apetito/downloads": "/apps/downloads/js/app.js",
+    "@apetito/legal": "/apps/legal/js/app.js",
+    "@apetito/faq": "/apps/faq/js/app.js",
+    "@apetito/notifications": "/apps/notifications/js/app.js",
+    "@apetito/contact-form": "/apps/contact-form/js/app.js",
+    "@apetito/menuservicemanager": "https://shared-menuservicemanager-client.stage.apebs.de/js/app.js",
+    "@apetito/application-guard": "/apps/application-guard/js/app.js",
+    "@apetito/mylunch": "https://shared-mylunch-client.stage.apebs.de/js/app.js"
+  }
+}

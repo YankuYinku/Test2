@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-root
+
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: portal-root
+          image: apetitoebusinesssolutions.azurecr.io/meinapetito-portal-root:latest
+          imagePullPolicy: Always

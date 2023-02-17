@@ -1,0 +1,59 @@
+<single-spa-router mode="history" base="/">
+  <div id="single-spa-wrapper" class="flex">
+    <application name="@apetito/navigation"></application>
+
+    <div class="root-wrapper">
+      <div class="root-wrapper-inner">
+        <header class="flex page-header">
+          <div id="page--title" class="page-title"></div>
+          <div class="flex page-header-applications">
+            <application name="@apetito/user-account"></application>
+            <application name="@apetito/notifications"></application>
+            <application name="@apetito/mini-basket"></application>
+          </div>
+        </header>
+
+        <main>
+          <route default>
+            <application name="@apetito/dashboard"></application>
+          </route>
+          <route path="basket">
+            <application name="@apetito/basket"></application>
+          </route>
+          <section class="relative">
+            <application name="@apetito/application-guard"></application>
+            <route path="menuservicemanager">
+              <application name="@apetito/menuservicemanager"></application>
+            </route>
+            <route path="mylunch">
+              <application name="@apetito/mylunch"></application>
+            </route>
+          </section> 
+          <route path="products">
+            <application name="@apetito/product-catalog"></application>
+          </route>
+          <route path="menuplanner-dashboard">
+            <application name="@apetito/menuplanner-dashboard"></application>
+          </route>
+          <route path="downloads">
+            <application name="@apetito/downloads"></application>
+          </route>
+          <route path="privacy-policy">
+            <application name="@apetito/legal"></application>
+          </route>
+          <route path="help">
+            <application name="@apetito/faq"></application>
+          </route>
+          <route path="user-account-details">
+            <application name="@apetito/user-account-details"></application>
+          </route>
+          <route path="contact">
+            <application name="@apetito/contact-form"></application>
+          </route>
+        </main>
+      </div>
+    </div>
+
+    <div id="headlessui-portal-root"></div>
+  </div>
+</single-spa-router>

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-root
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: portal-root
+  template:
+    metadata:
+      labels:
+        app: portal-root
+
+    spec:
+      containers:
+        - name: portal-root
+          image: apetitoebusinesssolutions.azurecr.io/meinapetito-portal-root:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: '16Mi'
+              cpu: '50m'
+            requests:
+              memory: '4Mi'
+              cpu: '5m'
+          ports:
+            - containerPort: 80
+            
+          env:
+            - name: SINGLESPA_ENVIRONMENT
+              value: Production

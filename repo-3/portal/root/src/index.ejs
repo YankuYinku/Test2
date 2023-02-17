@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.svg"/>
+
+    <!-- Preloads for smoother loading of applications -->
+    <link rel="preload" as="script" href="/apetito-root-config.js">
+    <link rel="preload" as="script" href="/sdk/common/apetito-portal-sdk-common.js">
+    <link rel="preload" as="script" href="/apps/dashboard/js/app.js">
+    <link rel="preload" as="script" href="/apps/navigation/js/app.js">
+    <link rel="preload" as="script" href="/apps/user-account/js/app.js">
+    <link rel="preload" as="script" href="/apps/mini-basket/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/basket/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/product-catalog/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/user-account-details/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/downloads/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/legal/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/faq/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/notifications/js/app.js">
+    <link rel="prefetch" as="script" href="/apps/contact-form/js/app.js">
+
+    <!-- prettier-ignore -->
+    <style>
+        html{-moz-osx-font-smoothing:grayscale;-moz-tab-size:4;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;box-sizing:border-box;font-size:16px;line-height:1.5;overflow-x:hidden;overflow-y:unset;tab-size:4;text-rendering:optimizeLegibility}html :after,html :before,html a{text-decoration:inherit}html a,html button,html input,html select,html textarea{background-color:transparent}html *,html ::after,html ::before{box-sizing:border-box}html button,html hr{overflow:visible}html a,html hr,html legend{color:inherit}html progress,html sub,html sup{vertical-align:baseline}html [type=search]{-webkit-appearance:textfield;outline-offset:-2px}html [type=button],html [type=reset],html [type=submit],html button{-webkit-appearance:button}html *,html fieldset,html legend,html ol,html ul{padding:0}html [aria-controls],html [role=button],html [type=button],html [type=reset],html [type=submit],html button{cursor:pointer}html :after,html :before{border-color:inherit;border-style:solid;border-width:0;vertical-align:inherit}html *{background-repeat:no-repeat;margin:0}html audio:not([controls]){display:none;height:0}html article,html aside,html details,html figcaption,html figure,html footer,html header,html main,html menu,html nav,html section{display:block}html abbr[title]{-webkit-text-decoration:underline dotted;border-bottom:1px dotted;text-decoration:underline dotted}html a{-webkit-text-decoration-skip:objects}html a:active,html a:hover{outline-width:0}html dfn{font-style:italic}html mark{background-color:#ff0;color:#000}html input{border-radius:0}html [aria-disabled="true"],html [disabled]{cursor:default}html [type=search]::-webkit-search-cancel-button,html [type=search]::-webkit-search-decoration{-webkit-appearance:none}html textarea{overflow:auto;resize:vertical}html button,html input,html optgroup,html select,html textarea{font:inherit}html body,html button,html input,html optgroup,html select,html textarea{font-family:inherit;line-height:inherit;margin:0}html optgroup{font-weight:700}html button{background-image:none}html [type=button]::-moz-focus-inner,html [type=reset]::-moz-focus-inner,html [type=submit]::-moz-focus-inner{border:0;outline:0;padding:0}html button::-moz-focus-inner{border-style:solid;padding:0}html select{-moz-appearance:none;-webkit-appearance:none}html select::-ms-value{color:currentColor}html legend{border:0;display:table;max-width:100%;white-space:normal}html svg:not(:root){overflow:hidden}html progress{display:inline-block}html [hidden],html select::-ms-expand,html template{display:none}html *,html ::after,html ::before,html img,html button,html input,html select,html textarea{border-style:solid}@media screen{html [hidden~=screen]{display:inherit}html [hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}}html [aria-busy=true]{cursor:progress}html .child-flex > *,html .flex{flex-grow:unset;flex-basis:unset}html *,html ::after,html ::before{border-color:inherit;border-width:0}html hr{border-top-width:1px;height:0}html b,html strong{font-weight:bolder}html code,html kbd,html pre,html samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em}html small{font-size:80%}html sub,html sup{font-size:75%;line-height:0;position:relative}html sub{bottom:-.25em}html sup{top:-.5em}html table{border-collapse:collapse;border-color:inherit;text-indent:0}html button,html input,html optgroup,html select,html textarea{color:inherit;font-size:100%;padding:0}html button,html select{text-transform:none}html ::-moz-focus-inner{border-style:none;padding:0}html :-moz-focusring{outline:auto}html :-moz-ui-invalid{box-shadow:none}html ::-webkit-inner-spin-button,html ::-webkit-outer-spin-button{height:auto}html ::-webkit-search-decoration{-webkit-appearance:none}html ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html summary{display:list-item}html blockquote,html dd,html dl,html fieldset,html figure,html h1,html h2,html h3,html h4,html h5,html h6,html hr,html ol,html p,html pre,html ul{margin:0}html ol,html ul{list-style:none;}html input::placeholder,html textarea::placeholder{color:#9ca3af;opacity:1}html h1,html h2,html h3,html h4,html h5,html h6{font-size:inherit;font-weight:inherit}html audio,html canvas,html embed,html iframe,html img,html object,html svg,html video{display:block;vertical-align:middle}html img,html video{height:auto;max-width:100%}html [hidden]{display:none}html ::-moz-selection,html ::selection{background-color:#b3d4fc;color:#000;text-shadow:none}
+    </style>
+    <style>
+      :root {
+        --header-height: 4.75rem;
+      }
+
+      html body {
+        font-family: "Signika Negative", sans-serif;
+      }
+
+      main {
+        height: calc(100vh - var(--header-height));
+      }
+
+      .root-wrapper {
+        max-height: 100vh;
+        padding-top: 3rem;
+        overflow: hidden;
+        flex: 1 1 0;
+      }
+
+      .root-wrapper-inner {
+        height: 100%;
+        overflow: auto;
+      }
+      .relative {
+        position: relative;
+      }
+
+      .page-header {
+        background-color: #e5e5e5;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.375rem;
+        padding-left: 2rem;
+        padding-right: 0.375rem;
+        height: var(--header-height);
+        position: sticky;
+        top: 0;
+        z-index: 35;
+      }
+
+      .page-header:empty {
+        visibility: hidden;
+      }
+
+      .page-title {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin-left: -3px;
+        font-weight: bold;
+        color: #393939;
+      }
+
+      #page--title {
+        height: 32px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .page-header-applications {
+        align-items: center;
+        gap: 0.375rem;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      @media (min-width: 768px) {
+        .root-wrapper {
+          padding-top: 0;
+        }
+      }
+
+      .resolutionNotification {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        background: #fff;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000000;
+        top: 0;
+        left: 0;
+      }
+
+      .resolutionButton {
+        border-radius: 9999px;
+        border-width: 1px;
+        border-color: transparent;
+        border-style: solid;
+        background-color: rgba(54,119,47);
+        color: white;
+        width: 100%;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 15px;
+      }
+
+      @media (max-height: 389px) and (orientation: landscape),
+        (max-width: 767px) and (orientation: portrait) {
+        .resolutionNotification {
+          display: flex;
+        }
+      }
+    </style>
+    <!-- Google Tag Manager -->
+    <!-- prettier-ignore -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W9BHB4D');</script>
+    <!-- End Google Tag Manager -->
+    <link rel="preconnect" href="//app.usercentrics.eu"/>
+    <link rel="preconnect" href="//api.usercentrics.eu"/>
+    <link
+      rel="preload"
+      href="//app.usercentrics.eu/browser-ui/latest/loader.js"
+      as="script"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+    <link
+      href="/assets/css/signika-negative.css"
+      rel="stylesheet"
+      nonce="3837c6f30c"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/base.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/components.min.css"
+    />
+    <script type="text/javascript">
+      const topLevelDomain = window.location.hostname.match(".([^\\.]+?)$");
+      const languageCodes = {
+        de: "de-DE",
+        at: "de-AT",
+        nl: "nl-NL",
+      };
+      let languageCode = "de-DE";
+      if (!topLevelDomain || topLevelDomain.length < 2) {
+        languageCode = languageCodes.de;
+      } else {
+        languageCode = languageCodes[topLevelDomain[1]] ?? languageCodes.de;
+      }
+    </script>
+    <!-- User Centrics -->
+    <script type="text/javascript">
+      var usercentricsId = "NrvGiWWD";
+      const languageCodeMapping = {
+        de: "ZqfICG62L",
+        at: "GGWsDfKhc",
+        nl: "qE6_3EuF9",
+      };
+      if (!topLevelDomain || topLevelDomain.length < 2) {
+        usercentricsId = languageCodeMapping.de;
+      } else {
+        usercentricsId =
+          languageCodeMapping[topLevelDomain[1]] ?? languageCodeMapping.de;
+      }
+      const uc = document.createElement("script");
+      uc.setAttribute("data-tcf-enabled", true);
+      uc.setAttribute("data-settings-id", usercentricsId);
+      uc.id = "usercentrics-cmp";
+      uc.src = "https://app.usercentrics.eu/browser-ui/latest/loader.js";
+      const firstScriptTag = document.getElementsByTagName("script")[0];
+      firstScriptTag.parentNode.insertBefore(uc, firstScriptTag);
+    </script>
+    <!-- End User Centrics -->
+    <!--
+    Remove this if you only support browsers that support async/await.
+    This is needed by babel to share largeish helper code for compiling async/await in older
+    browsers. More information at https://github.com/single-spa/create-single-spa/issues/112
+  -->
+    <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+
+    <!--
+    This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
+    Learn more about CSP policies at https://content-security-policy.com/#directive
+  -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https: localhost:* http://apwebdev01:* http://apspred01:* https://cdnjs.cloudflare.com data:;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https: localhost:* http://apwebdev01:* http://apspred01:* https://cdnjs.cloudflare.com;
+      connect-src https: localhost:* ws://localhost:* wss://apetito.service.signalr.net wss://apetito-red.service.signalr.net wss://apetito-dev.service.signalr.net http://apwebdev01:* http://apspred01:*;
+      style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com nonce-3837c6f30c ;
+      object-src *.dev.apebs.de *.stage.apebs.de *.prod.apebs.de localhost:* https://mein.apetito.de https://api.apetito.de;"
+    />
+    <meta name="importmap-type" content="systemjs-importmap"/>
+    <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
+    <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
+    <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
+
+    <!-- Shared dependencies go into this import map. Your shared dependencies must be of one of the following formats:
+
+    1. System.register (preferred when possible) - https://github.com/systemjs/systemjs/blob/master/docs/system-register.md
+    2. UMD - https://github.com/umdjs/umd
+    3. Global variable
+
+    More information about shared dependencies can be found at https://single-spa.js.org/docs/recommended-setup#sharing-with-import-maps.
+  -->
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+          "@apetito/portal-sdk-common": "/sdk/common/apetito-portal-sdk-common.js"
+        }
+      }
+    </script>
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+      as="script"
+    />
+
+    <!-- Add your organization's prod import map URL to this script's src  -->
+    <script type="systemjs-importmap" src="/importmap.json"></script>
+
+    <% if (isLocal) { %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@apetito/root-config": "//localhost:9000/apetito-root-config.js",
+          "@apetito/dashboard": "//localhost:8082/js/app.js",
+          "@apetito/mini-basket": "//localhost:8081/js/app.js",
+          "@apetito/user-account-details": "//localhost:8087/js/app.js",
+          "@apetito/basket": "//localhost:8080/js/app.js",
+          "@apetito/menuplanner-dashboard": "//localhost:8083/js/app.js",
+          "@apetito/account-number": "//localhost:8085/js/app.js",
+          "@apetito/downloads": "//localhost:8084/js/app.js",
+          "@apetito/legal": "//localhost:8086/js/app.js",
+          "@apetito/notifications": "//localhost:8088/js/app.js"
+        }
+      }
+    </script>
+    <% } %>
+
+    <!--
+    If you need to support Angular applications, uncomment the script tag below to ensure only one instance of ZoneJS is loaded
+    Learn more about why at https://single-spa.js.org/docs/ecosystem-angular/#zonejs
+  -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.3/dist/zone.min.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
+    <% if (isLocal) { %>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
+    <% } else { %>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+    <% } %>
+    <script
+      async
+      defer
+      src="https://static.cdn.prismic.io/prismic.js?new=true&repo=meinapetito-development"
+    ></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <!-- prettier-ignore -->
+    <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W9BHB4D"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript> You need to enable JavaScript to run this app.</noscript>
+    <script>
+      System.import("@apetito/root-config");
+    </script>
+    <import-map-overrides-full
+      show-when-local-storage="devtools"
+      dev-libs
+    ></import-map-overrides-full>
+
+    <input
+      type="hidden"
+      id="hiddenBearerToken"
+      name="hiddenBearerToken"
+      value=""
+    />
+    <script>
+      function hideResolutionNotification(){
+        document.getElementById("resNotification").style.display = "none";
+      }
+    </script>
+    <div class="resolutionNotification" id="resNotification">
+      <p class="resolutionText">
+        Die Auflösung Ihres Gerätes ist zu gering um mein.apetito verwenden zu
+        können. Wir empfehlen daher das Browserfenster zu vergrößern oder ein
+        anderes Gerät zu verwenden.
+      </p>
+      <div>
+        <button class="resolutionButton" onclick="hideResolutionNotification()">
+          Trotzdem benutzen
+        </button>
+      </div>
+    </div>
+    <script>
+      if (languageCode === "nl-NL") {
+        document.getElementsByClassName("resolutionText").innerHTML =
+          "NL Die Auflösung Ihres Gerätes ist zu gering um mein.apetito verwenden zu können. Wir empfehlen daher das Browserfenster zu vergrößern oder ein anderes Gerät zu verwenden.";
+      }
+    </script>
+    <!-- Browser Compatibility -->
+    <script>
+      browser = {};
+      if (/(MSIE\ [0-9]{1})/i.test(navigator.userAgent)) {
+        browser.agent = navigator.userAgent
+          .match(/(MSIE\ [0-9]{1})/i)[0]
+          .split(" ")[0];
+        browser.version = parseInt(
+          navigator.userAgent.match(/(MSIE\ [0-9]+)/i)[0].split(" ")[1]
+        );
+      } else if (/(Trident\/[7]{1})/i.test(navigator.userAgent)) {
+        browser.agent = "MSIE";
+        browser.version = 11;
+      } else {
+        browser.agent = false;
+        browser.version = false;
+      }
+
+      if (browser.agent === "MSIE") {
+        var newDiv = document.createElement("div");
+        newDiv.innerHTML =
+          "Der verwendete Browser ist veraltet.<br/>Um alle Funktionen von mein.apetito richtig nutzen zu können, empfehlen wir die Nutzung eines modernen Browser wie z.B.:<br/><u><a href='https://www.google.com/chrome/'>Google Chrome</a></u>, <u><a href='http://getfirefox.com'>Firefox</a></u> oder den neuen <u><a href='https://www.microsoft.com/edge'>Microsoft Edge</a></u>.";
+        newDiv.setAttribute("style", "text-align:center;padding:4rem;");
+        document.body.insertBefore(newDiv, document.body.firstChild);
+      }
+    </script>
+  </body>
+</html>

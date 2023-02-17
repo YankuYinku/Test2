@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-root
+
+spec:
+  replicas: 1
+  
+  template:
+
+    spec:
+      containers:
+        - name: portal-root          
+          image: apetitoebusinesssolutions.azurecr.io/meinapetito-portal-root:<Tag>
+          env:
+            - name: SINGLESPA_ENVIRONMENT
+              value: Development

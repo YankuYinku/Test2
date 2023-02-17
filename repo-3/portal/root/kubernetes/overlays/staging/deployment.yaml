@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-root
+
+spec:
+  replicas: 1
+  
+  template:
+
+    spec:
+      containers:
+        - name: portal-root          
+            
+          env:
+            - name: SINGLESPA_ENVIRONMENT
+              value: Staging
