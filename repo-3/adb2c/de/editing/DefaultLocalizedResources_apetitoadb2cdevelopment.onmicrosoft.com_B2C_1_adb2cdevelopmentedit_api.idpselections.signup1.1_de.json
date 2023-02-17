@@ -1,0 +1,137 @@
+{
+  "LocalizedStrings": [
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "AmazonExchange",
+      "Override": false,
+      "Value": "Amazon"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "ChangePhoneNumber",
+      "Override": false,
+      "Value": "Telefonnummer ändern"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "FacebookExchange",
+      "Override": false,
+      "Value": "Facebook"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "GoogleExchange",
+      "Override": false,
+      "Value": "Google"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "LinkedInExchange",
+      "Override": false,
+      "Value": "LinkedIn"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "MicrosoftAccountExchange",
+      "Override": false,
+      "Value": "Microsoft"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignInWithLogonEmailExchange",
+      "Override": false,
+      "Value": "Lokales Konto"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignInWithLogonNameExchange",
+      "Override": false,
+      "Value": "Lokales Konto"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonEmailExchange",
+      "Override": false,
+      "Value": "E-Mail-Adresse"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonNameExchange",
+      "Override": false,
+      "Value": "Benutzer-ID"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonPhoneExchange",
+      "Override": false,
+      "Value": "Telefon"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_message",
+      "Override": false,
+      "Value": "Möchten Sie die Auswahl eines Identitätsanbieters abbrechen?"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_no",
+      "Override": false,
+      "Value": "Nein"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_title",
+      "Override": false,
+      "Value": "Auswahl abbrechen"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_yes",
+      "Override": false,
+      "Value": "Ja"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "already",
+      "Override": false,
+      "Value": ""
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "button_cancel",
+      "Override": false,
+      "Value": "Abbrechen"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "cancel_message",
+      "Override": false,
+      "Value": "Der Benutzer hat die Auswahl eines Identitätsanbieters abgebrochen."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "intro",
+      "Override": false,
+      "Value": "Registrieren"
+    }
+  ]
+}

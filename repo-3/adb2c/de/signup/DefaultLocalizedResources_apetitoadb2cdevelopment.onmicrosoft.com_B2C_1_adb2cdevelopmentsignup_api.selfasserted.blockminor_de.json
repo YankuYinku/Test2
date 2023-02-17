@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90001",
+          "Value": "Ihre Anmeldung wurde blockiert. Gesetze zu Datenschutz und Onlinesicherheit in Ihrem Land/Ihrer Region untersagen den Zugriff auf Konten von Kindern."
+        }
+      ]
+    }
+  ]
+}

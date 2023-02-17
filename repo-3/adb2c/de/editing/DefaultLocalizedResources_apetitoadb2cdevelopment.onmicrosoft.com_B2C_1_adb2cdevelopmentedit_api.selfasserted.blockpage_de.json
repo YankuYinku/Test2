@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90002",
+          "Value": "Aufgrund der kürzlich mit Ihrem Konto durchgeführten Aktivitäten wurde Ihre Anmeldung vorübergehend blockiert."
+        }
+      ]
+    }
+  ]
+}
