@@ -1,0 +1,452 @@
+{
+  "LocalizedStrings": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "countryCode",
+      "StringId": "DisplayName",
+      "Override": false,
+      "Value": "Land/regio"
+    },
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "nationalNumber",
+      "StringId": "DisplayName",
+      "Override": false,
+      "Value": "Telefoonnummer"
+    },
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "nationalNumber",
+      "StringId": "UserHelpText",
+      "Override": false,
+      "Value": "Nationaal telefoonnummer invoeren"
+    },
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "phoneVerificationCode",
+      "StringId": "DisplayName",
+      "Override": false,
+      "Value": "Telefoonverificatiecode gebruiken"
+    },
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "phoneVerificationCode",
+      "StringId": "UserHelpText",
+      "Override": false,
+      "Value": "Voer de sms-verificatiecode in die u hebt ontvangen in het e-mailbericht."
+    },
+    {
+      "ElementType": "DisplayControl",
+      "ElementId": "phoneVerificationControl",
+      "StringId": "but_change_claims",
+      "Override": false,
+      "Value": "Telefoonnummer wijzigen"
+    },
+    {
+      "ElementType": "DisplayControl",
+      "ElementId": "phoneVerificationControl",
+      "StringId": "but_send_code",
+      "Override": false,
+      "Value": "Verificatiecode verzenden"
+    },
+    {
+      "ElementType": "DisplayControl",
+      "ElementId": "phoneVerificationControl",
+      "StringId": "but_send_new_code",
+      "Override": false,
+      "Value": "Nieuwe code verzenden"
+    },
+    {
+      "ElementType": "DisplayControl",
+      "ElementId": "phoneVerificationControl",
+      "StringId": "but_verify_code",
+      "Override": false,
+      "Value": "Code verifiëren"
+    },
+    {
+      "ElementType": "DisplayControl",
+      "ElementId": "phoneVerificationControl",
+      "StringId": "success_send_code_msg",
+      "Override": false,
+      "Value": "De verificatiecode is verzonden naar uw telefoonnummer. Kopieer de code in het onderstaande invoervak."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "AADRequestsThrottled",
+      "Override": false,
+      "Value": "Er zijn momenteel te veel aanvragen. Probeer het over enige tijd opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "ServiceThrottled",
+      "Override": false,
+      "Value": "Er zijn momenteel te veel aanvragen. Probeer het over enige tijd opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfChallengeExpired",
+      "Override": false,
+      "Value": "De code is verlopen. Vraag een nieuwe code aan."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfClaimsPrincipalDoesNotExist",
+      "Override": false,
+      "Value": "Het telefoonnummer komt niet voor in ons systeem. Probeer u aan te melden met het nummer."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfCouldntSendSms",
+      "Override": false,
+      "Value": "Kan geen SMS-bericht naar de telefoon verzenden. Kies een ander telefoonnummer."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfInternalError",
+      "Override": false,
+      "Value": "Het telefoonnummer kan niet worden geverifieerd. Voer een geldig e-telefoonnummer in en probeer het opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfInvalidFormat",
+      "Override": false,
+      "Value": "Het telefoonnummer heeft geen geldige notatie. Herstel het telefoonnummer en probeer het opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfMaxAllowedCodeRetryReached",
+      "Override": false,
+      "Value": "Er is te vaak een onjuiste code ingevoerd. Probeer het later opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfServerError",
+      "Override": false,
+      "Value": "Kan de MFA-service niet gebruiken. Probeer het later opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfThrottled",
+      "Override": false,
+      "Value": "Er zijn te veel aanvragen gedaan om dit e-telefoonnummer te verifiëren. Probeert het over enige tijd opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfVerificationFailedNoRetry",
+      "Override": false,
+      "Value": "U hebt te veel onjuiste pogingen gedaan. Probeer het later opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfVerificationFailedRetryAllowed",
+      "Override": false,
+      "Value": "De code is onjuist. Probeer het opnieuw."
+    },
+    {
+      "ElementType": "ErrorMessage",
+      "ElementId": null,
+      "StringId": "UserMessageIfWrongCodeEntered",
+      "Override": false,
+      "Value": "Onjuiste code ingevoerd. Probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_message",
+      "Override": false,
+      "Value": "Weer u zeker dat u het invoeren van uw gegevens wilt annuleren?"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_no",
+      "Override": false,
+      "Value": "Nee"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_title",
+      "Override": false,
+      "Value": "Invoeren van uw gegevens annuleren"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_yes",
+      "Override": false,
+      "Value": "Ja"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "button_cancel",
+      "Override": false,
+      "Value": "Annuleren"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "button_continue",
+      "Override": false,
+      "Value": "Doorgaan"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "cancel_message",
+      "Override": false,
+      "Value": "De gebruiker heeft het invoeren van de door de gebruiker gecontroleerde gegevens geannuleerd"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "day",
+      "Override": false,
+      "Value": "Dag"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "disclaimer_link_1_text",
+      "Override": false,
+      "Value": "Privacyverklaring"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "disclaimer_link_1_url",
+      "Override": false,
+      "Value": "https://jwt.ms"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "disclaimer_link_2_text",
+      "Override": false,
+      "Value": "Algemene voorwaarden"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "disclaimer_link_2_url",
+      "Override": false,
+      "Value": "https://jwt.ms"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "disclaimer_msg_intro",
+      "Override": false,
+      "Value": "Als u uw telefoonnummer opgeeft, gaat u akkoord met het ontvangen van een eenmalige wachtwoordcode via sms zodat u zich kunt aanmelden bij {insert your application name}. Mogelijk zijn er standaardbericht- en gegevenskosten van toepassing."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "error_fieldIncorrect",
+      "Override": false,
+      "Value": "Een of meer velden zijn onjuist ingevuld. Controleer de ingevoerde gegevens en probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "error_passwordEntryMismatch",
+      "Override": false,
+      "Value": "De wachtwoordinvoervelden komen niet overeen. Voer in beide velden hetzelfde wachtwoord in en probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "error_requiredFieldMissing",
+      "Override": false,
+      "Value": "Er ontbreekt een vereist veld. Vul alle vereiste velden in en probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "heading",
+      "Override": false,
+      "Value": "Registreren"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "helplink_text",
+      "Override": false,
+      "Value": "Wat is dit?"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "initial_intro",
+      "Override": false,
+      "Value": "Verifieer uw landcode en telefoonnummer"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "month",
+      "Override": false,
+      "Value": "Maand"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "months",
+      "Override": false,
+      "Value": "januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "preloader_alt",
+      "Override": false,
+      "Value": "Een ogenblik geduld..."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "required_field",
+      "Override": false,
+      "Value": "Deze informatie is vereist."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_but_default",
+      "Override": false,
+      "Value": "Standaardinstelling"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_but_edit",
+      "Override": false,
+      "Value": "E-mailadres wijzigen"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_but_resend",
+      "Override": false,
+      "Value": "Nieuwe code verzenden"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_but_send",
+      "Override": false,
+      "Value": "Verificatiecode verzenden"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_but_verify",
+      "Override": false,
+      "Value": "Code verifiëren"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_fail_code_expired",
+      "Override": false,
+      "Value": "De code is verlopen. Vraag een nieuwe code aan."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_fail_no_retry",
+      "Override": false,
+      "Value": "U hebt te veel onjuiste pogingen gedaan. Probeer het later opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_fail_retry",
+      "Override": false,
+      "Value": "De code is onjuist. Probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_fail_server",
+      "Override": false,
+      "Value": "Uw e-mailadres kan niet worden geverifieerd. Voer een geldig e-mailadres in en probeer het opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_fail_throttled",
+      "Override": false,
+      "Value": "Er zijn te veel aanvragen gedaan om dit e-mailadres te verifiëren. Probeer het over enige tijd opnieuw."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_incorrect_format",
+      "Override": false,
+      "Value": "Onjuiste indeling."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_info_msg",
+      "Override": false,
+      "Value": "De verificatiecode is verzonden naar uw Postvak IN. Kopieer de code naar het onderstaande invoervak."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_input",
+      "Override": false,
+      "Value": "Verificatiecode"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_intro_msg",
+      "Override": false,
+      "Value": "Verificatie is vereist. Klik op de knop Verzenden."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_sent",
+      "Override": false,
+      "Value": "De verificatiecode is verzonden naar:"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "ver_success_msg",
+      "Override": false,
+      "Value": "Het e-mailadres is geverifieerd. U kunt nu doorgaan."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "verifying_blurb",
+      "Override": false,
+      "Value": "De gegevens worden verwerkt. Een ogenblik geduld..."
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "year",
+      "Override": false,
+      "Value": "Jaar"
+    }
+  ]
+}
