@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90001",
+          "Value": "Unfortunately, your sign on has been blocked. Privacy and online safety laws in your country prevent access to accounts belonging to children."
+        }
+      ]
+    }
+  ]
+}

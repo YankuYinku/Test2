@@ -1,0 +1,16 @@
+{
+  "LocalizedCollections": [
+    {
+      "ElementType": "ClaimType",
+      "ElementId": "responseMsg",
+      "TargetCollection": "Restriction",
+      "Override": false,
+      "Items": [
+        {
+          "Name": "B2C_V1_90002",
+          "Value": "Due to recent activity associated with your account, your login has been temporarily blocked."
+        }
+      ]
+    }
+  ]
+}
