@@ -1,0 +1,89 @@
+{
+  "id": "98c80cd6-f956-4ff2-b959-e5e39851607b",
+  "acceptMappedClaims": null,
+  "accessTokenAcceptedVersion": null,
+  "addIns": [],
+  "allowPublicClient": null,
+  "appId": "b19b9796-4b3b-4705-b95e-3d2e33a4c822",
+  "appRoles": [],
+  "oauth2AllowUrlPathMatching": false,
+  "createdDateTime": "2022-03-29T15:09:56Z",
+  "description": null,
+  "certification": null,
+  "disabledByMicrosoftStatus": null,
+  "groupMembershipClaims": null,
+  "identifierUris": [],
+  "informationalUrls": {
+    "termsOfService": null,
+    "support": null,
+    "privacy": null,
+    "marketing": null
+  },
+  "keyCredentials": [],
+  "knownClientApplications": [],
+  "logoUrl": null,
+  "logoutUrl": null,
+  "name": "portal-management",
+  "notes": null,
+  "oauth2AllowIdTokenImplicitFlow": false,
+  "oauth2AllowImplicitFlow": false,
+  "oauth2Permissions": [],
+  "oauth2RequirePostResponse": false,
+  "optionalClaims": null,
+  "orgRestrictions": [],
+  "parentalControlSettings": {
+    "countriesBlockedForMinors": [],
+    "legalAgeGroupRule": "Allow"
+  },
+  "passwordCredentials": [
+    {
+      "customKeyIdentifier": null,
+      "endDate": "2022-09-29T15:10:03.604Z",
+      "keyId": "ca59e78f-471d-4674-86bf-9a3469ee4846",
+      "startDate": "2022-03-29T15:10:03.604Z",
+      "value": null,
+      "createdOn": "2022-03-29T15:10:11.5672818Z",
+      "hint": "3zU",
+      "displayName": "portal-management-accesskey"
+    }
+  ],
+  "preAuthorizedApplications": [],
+  "publisherDomain": "apetitoadb2cstaging.onmicrosoft.com",
+  "replyUrlsWithType": [],
+  "requiredResourceAccess": [
+    {
+      "resourceAppId": "00000003-0000-0000-c000-000000000000",
+      "resourceAccess": [
+        {
+          "id": "7427e0e9-2fba-42fe-b0c0-848c9e6a8182",
+          "type": "Scope"
+        },
+        {
+          "id": "37f7f235-527c-4136-accd-4a02d197296e",
+          "type": "Scope"
+        },
+        {
+          "id": "741f803b-c850-494e-b5df-cde7c675a1ca",
+          "type": "Role"
+        },
+        {
+          "id": "18a4783c-866b-4cc7-a460-3d5e5662c884",
+          "type": "Role"
+        },
+        {
+          "id": "1bfefb4e-e0b5-418b-a88f-73c46d2cc8e9",
+          "type": "Role"
+        },
+        {
+          "id": "7ab1d382-f21e-4acd-a863-ba3e13f7da61",
+          "type": "Role"
+        }
+      ]
+    }
+  ],
+  "samlMetadataUrl": null,
+  "signInUrl": null,
+  "signInAudience": "AzureADMyOrg",
+  "tags": [],
+  "tokenEncryptionKeyId": null
+}

@@ -1,0 +1,69 @@
+// For easy to use requests install VS code extensions "httpyac" before using this file
+
+// Create .env files for the needed variables. Make sure they are not checked in. The name is already in gitignore
+
+// impersonationRequests-dev.env
+//
+// portalManagementClientSecret=<Get Value from Keepass : portalManagementClientSecret:Development>
+// portalManagementClientId=e331395d-9609-46fe-87b4-41206d51fc3d
+// extensionApplicationId=69da7f884cdc4a70aebaceda8462d408
+// azureDirectoryId=1b0b1704-442b-4c80-8703-d39bd786818d
+
+
+//impersonationRequests-staging.env
+//
+//portalManagementClientSecret=<Get Value from Keepass : portalManagementClientSecret:Staging>
+//portalManagementClientId=b19b9796-4b3b-4705-b95e-3d2e33a4c822
+//extensionApplicationId=63551cc85a474557a413f2e5d435d7ae
+//azureDirectoryId=637d1009-ca34-416c-b6c0-e828d45276eb
+
+
+// impersonationRequests-production.env
+
+// portalManagementClientSecret=<Get Value from Keepass : portalManagementClientSecret:Production>
+// portalManagementClientId=26485083-b9b9-4c67-9ed3-3a5c699082ed
+// extensionApplicationId=c79c58805f7d446db85ff78fed566c28
+// azureDirectoryId=698750a5-4972-4963-b819-79521b79fc75
+
+
+/*
+Azure AD B2C User ID
+You have to find the user id by searching for the account in the Azure ADB2C Portal
+Azure Portal -> Azure ADB2C -> Users -> All Users -> Search -> Click on user -> Check for ID in URL
+*/
+@azureAdUserId = 41351a53-b855-49ba-b186-668ab299a6d7
+
+
+### Get token
+# @name token
+POST https://login.microsoftonline.com/{{azureDirectoryId}}/oauth2/v2.0/token HTTP/1.1
+Host: login.microsoftonline.com
+Content-Type: application/x-www-form-urlencoded
+
+client_id={{portalManagementClientId}}
+&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_secret={{portalManagementClientSecret}}
+&grant_type=client_credentials
+
+### Get user from azure graph api 
+# @ref token
+
+GET https://graph.microsoft.com/v1.0/users/{{azureAdUserId}}
+Authorization: Bearer {{token.access_token}}
+
+###
+# Get user settings for the impersonation field from azure graph api
+# @ref token
+GET https://graph.microsoft.com/v1.0/users/{{azureAdUserId}}?$select=extension_{{extensionApplicationId}}_can_impersonate
+Authorization: Bearer {{token.access_token}}
+
+###
+# Set impersonation flag on user 
+# @ref token
+PATCH https://graph.microsoft.com/v1.0/users/{{azureAdUserId}}
+Content-Type: application/json
+Authorization: Bearer {{token.access_token}}
+
+{
+    "extension_{{extensionApplicationId}}_can_impersonate": "1"
+}
