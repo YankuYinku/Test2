@@ -1,0 +1,137 @@
+{
+  "LocalizedStrings": [
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "AmazonExchange",
+      "Override": false,
+      "Value": "Amazon"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "ChangePhoneNumber",
+      "Override": false,
+      "Value": "Change Phone Number"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "FacebookExchange",
+      "Override": false,
+      "Value": "Facebook"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "GoogleExchange",
+      "Override": false,
+      "Value": "Google"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "LinkedInExchange",
+      "Override": false,
+      "Value": "LinkedIn"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "MicrosoftAccountExchange",
+      "Override": false,
+      "Value": "Microsoft"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignInWithLogonEmailExchange",
+      "Override": false,
+      "Value": "Local Account"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignInWithLogonNameExchange",
+      "Override": false,
+      "Value": "Local Account"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonEmailExchange",
+      "Override": false,
+      "Value": "Email"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonNameExchange",
+      "Override": false,
+      "Value": "User ID"
+    },
+    {
+      "ElementType": "ClaimsProvider",
+      "ElementId": null,
+      "StringId": "SignUpWithLogonPhoneExchange",
+      "Override": false,
+      "Value": "Phone"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_message",
+      "Override": false,
+      "Value": "Are you sure that you want to cancel choosing an identity provider?"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_no",
+      "Override": false,
+      "Value": "No"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_title",
+      "Override": false,
+      "Value": "Cancel Selection"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "alert_yes",
+      "Override": false,
+      "Value": "Yes"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "already",
+      "Override": false,
+      "Value": ""
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "button_cancel",
+      "Override": false,
+      "Value": "Cancel"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "cancel_message",
+      "Override": false,
+      "Value": "The user has canceled choosing an identity provider"
+    },
+    {
+      "ElementType": "UxElement",
+      "ElementId": null,
+      "StringId": "intro",
+      "Override": false,
+      "Value": "Sign up"
+    }
+  ]
+}
