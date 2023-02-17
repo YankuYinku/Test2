@@ -1,0 +1,316 @@
+# The pipeline varialbes ARM_CLIENT_ID and ARM_CLIENT_SECRET are those of the 'http://meinapetito-development/appSettings' service principal.
+# The password (Client Secret) can be found in KeePass
+
+name: apetito.meinapetito - dev version cluster meinapetito-$(VERSION)
+
+resources:
+  repositories:
+    - repository: self
+      trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: dev-meinapetito
+
+  - name: LOCATION
+    value: "westeurope"
+  - name: ENVIRONMENT
+    value: "dev"
+  - name: RESSOURCE_GROUP
+    value: "$(ENVIRONMENT)_meinapetito"
+  - name: CLUSTER_NAME
+    value: "$(ENVIRONMENT)-meinapetito-$(VERSION)"
+  - name: RESSOURCE_GROUP_INFRASTRUCTURE
+    value: "MC_$(RESSOURCE_GROUP)_$(CLUSTER_NAME)_$(LOCATION)"
+  - name: TERRAFORM_STATE_STORAGE_ACCOUNT_RESSOURCE_GROUP
+    value: "$ENVIRONMENT_infrastructure"
+  - name: TERRAFORM_STATE_STORAGE_ACCOUNT_NAME
+    value: "ap$(ENVIRONMENT)infrastructure"
+  - name: TERRAFORM_STATE_BLOB_CONTAINER_NAME
+    value: "terraformstate"
+  - name: TERRAFORM_STATE_KEY
+    value: "$(ENVIRONMENT).meinapetito.cluster.$(VERSION).tfstate"
+  - name: AZURE_SUBSCRIPTION_NAME
+    value: "apetito-azure-service-connection"
+
+stages:
+  - stage: CreateFeatureCluster
+    lockBehavior: sequential
+    displayName: Create feature cluster
+    jobs:
+      - job: TerraformInitPlanApply
+        steps:
+          - task: AzureCLI@2
+            displayName: terraform init
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "inlineScript"
+              arguments: "$(ENVIRONMENT) $(VERSION)"
+              workingDirectory: ./infrastructure/terraform/root/cluster
+
+              inlineScript: |
+                terraform init `
+                  -backend-config="resource_group_name=$(TERRAFORM_STATE_STORAGE_ACCOUNT_RESSOURCE_GROUP)" `
+                  -backend-config="storage_account_name=$(TERRAFORM_STATE_STORAGE_ACCOUNT_NAME)" `
+                  -backend-config="container_name=$(TERRAFORM_STATE_BLOB_CONTAINER_NAME)" `
+                  -backend-config="key=$(TERRAFORM_STATE_KEY)" 
+
+            env:
+              ARM_ACCESS_KEY: $(apetito-infrastructure-storageaccount-apdevinfrastructure-AccessKey1)
+              ARM_SUBSCRIPTION_ID: $(apetito-Azure-SubscriptionId)
+              ARM_CLIENT_ID: $(apetito-meinapetito-serviceprincipal-clientid)
+              ARM_CLIENT_SECRET: $(apetito-meinapetito-serviceprincipal-clientsecret)
+              ARM_TENANT_ID: $(apetito-Azure-TenantId)
+
+          - task: AzureCLI@2
+            displayName: terraform plan
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "inlineScript"
+              arguments: "$(ENVIRONMENT) $(VERSION)"
+              workingDirectory: ./infrastructure/terraform/root/cluster
+              inlineScript: |
+                . ./_scripts/helper.ps1
+
+                $ClusterSubnetAddressSpace = GetFirstAvailableOrExistingSubnetRange $(ENVIRONMENT) $(Version)
+                Write-Host "ClusterSubnetAddressSpace = $ClusterSubnetAddressSpace"
+
+                terraform plan -out deployment.tfplan `
+                  -var-file="$(ENVIRONMENT)/env.tfvars" `
+                  -var="clusterSubnetAddressSpace=$ClusterSubnetAddressSpace" `
+                  -var="version_number=$(VERSION)"
+
+
+            env:
+              ARM_ACCESS_KEY: $(apetito-infrastructure-storageaccount-apdevinfrastructure-AccessKey1)
+              ARM_SUBSCRIPTION_ID: $(apetito-Azure-SubscriptionId)
+              ARM_CLIENT_ID: $(apetito-meinapetito-serviceprincipal-clientid)
+              ARM_CLIENT_SECRET: $(apetito-meinapetito-serviceprincipal-clientsecret)
+              ARM_TENANT_ID: $(apetito-Azure-TenantId)
+
+
+          - task: AzureCLI@2
+            displayName: terraform apply
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "inlineScript"
+              arguments: "$(ENVIRONMENT) $(VERSION)"
+              workingDirectory: ./infrastructure/terraform/root/cluster
+              inlineScript: |
+                terraform apply -auto-approve deployment.tfplan
+            
+            env:
+              ARM_ACCESS_KEY: $(apetito-infrastructure-storageaccount-apdevinfrastructure-AccessKey1)
+              ARM_SUBSCRIPTION_ID: $(apetito-Azure-SubscriptionId)
+              ARM_CLIENT_ID: $(apetito-meinapetito-serviceprincipal-clientid)
+              ARM_CLIENT_SECRET: $(apetito-meinapetito-serviceprincipal-clientsecret)
+              ARM_TENANT_ID: $(apetito-Azure-TenantId)
+
+
+      - deployment: ConfigureFeatureCluster
+        environment: meinapetito-featurecluster
+        dependsOn:
+          - TerraformInitPlanApply
+        strategy:
+         runOnce:
+           deploy:
+              steps:
+                - checkout: self
+                - task: AzureCLI@2
+                  name: IngressController
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/create-01-IngressController.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: ClusterSecrets
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/create-02-ClusterSecrets.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: ApplicationGatewayConfiguration
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/create-03-ApplicationGatewayConfiguration.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: ServiceBusWindowsFirewallRule
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/create-04-ServiceBusWindowsFirewallRule.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: RedirectUris
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/create-05-RedirectUris.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+  - stage: DeployMeinApetito
+    displayName: Deploy latest images
+    jobs:
+      - job: DeployLatest
+        steps:
+          - task: AzureCLI@2
+            displayName: Add AKS cluster to kubeconfig
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "inlineScript"
+              inlineScript: |
+                az aks get-credentials -g $(RESSOURCE_GROUP) -n $(CLUSTER_NAME)
+
+          - task: AzureCLI@2
+            displayName: Prepare feature branch for deployment of latest images
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "scriptPath"
+              scriptPath: "./prepare-feature-branch.ps1"
+              workingDirectory: "$(Build.SourcesDirectory)"
+              arguments: '$(VERSION) "latest"'
+
+          - task: AzureCLI@2
+            displayName: Deploy latest
+            inputs:
+              azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+              scriptType: "pscore"
+              scriptLocation: "scriptPath"
+              scriptPath: "./deploy-feature.ps1"
+              workingDirectory: "$(Build.SourcesDirectory)"
+
+  - stage: Destroy
+    lockBehavior: sequential
+    displayName: Destroy feature cluster
+    jobs:
+      - deployment: TerraformInitDestroy
+        environment: meinapetito-featurecluster
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - task: AzureCLI@2
+                  displayName: terraform init
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "inlineScript"
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+                    workingDirectory: ./infrastructure/terraform/root/cluster
+                    inlineScript: |
+                      terraform init `
+                        -backend-config="resource_group_name=$(TERRAFORM_STATE_STORAGE_ACCOUNT_RESSOURCE_GROUP)" `
+                        -backend-config="storage_account_name=$(TERRAFORM_STATE_STORAGE_ACCOUNT_NAME)" `
+                        -backend-config="container_name=$(TERRAFORM_STATE_BLOB_CONTAINER_NAME)" `
+                        -backend-config="key=$(TERRAFORM_STATE_KEY)" 
+                  env:
+                    ARM_ACCESS_KEY: $(apetito-infrastructure-storageaccount-apdevinfrastructure-AccessKey1)
+                    ARM_SUBSCRIPTION_ID: $(apetito-Azure-SubscriptionId)
+                    ARM_CLIENT_ID: $(apetito-meinapetito-serviceprincipal-clientid)
+                    ARM_CLIENT_SECRET: $(apetito-meinapetito-serviceprincipal-clientsecret)
+                    ARM_TENANT_ID: $(apetito-Azure-TenantId)
+
+                - task: AzureCLI@2
+                  displayName: terraform destroy
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "inlineScript"
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+                    workingDirectory: ./infrastructure/terraform/root/cluster
+                    inlineScript: |
+                      . ./_scripts/helper.ps1
+                      
+                      $ClusterSubnetAddressSpace = GetAddressPrefix $(ENVIRONMENT) $(VERSION)
+                      
+                      if([string]::IsNullOrEmpty($ClusterSubnetAddressSpace))
+                      {  
+                        $ClusterSubnetAddressSpace = "127.0.0.1" #Cluster might be deleted so we avoid empty string
+                      }
+                      
+                      terraform apply -destroy -auto-approve `
+                        -var-file="$(ENVIRONMENT)/env.tfvars" `
+                        -var="clusterSubnetAddressSpace=$ClusterSubnetAddressSpace" `
+                        -var="version_number=$(VERSION)"
+
+                  env:
+                    ARM_ACCESS_KEY: $(apetito-infrastructure-storageaccount-apdevinfrastructure-AccessKey1)
+                    ARM_SUBSCRIPTION_ID: $(apetito-Azure-SubscriptionId)
+                    ARM_CLIENT_ID: $(apetito-meinapetito-serviceprincipal-clientid)
+                    ARM_CLIENT_SECRET: $(apetito-meinapetito-serviceprincipal-clientsecret)
+                    ARM_TENANT_ID: $(apetito-Azure-TenantId)
+
+      - deployment: DestroyAdditionalRessources
+        environment: meinapetito-featurecluster
+        dependsOn:
+          - TerraformInitDestroy
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - checkout: self
+                - task: AzureCLI@2
+                  name: ApplicationGatewayConfiguration
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/destroy-01-ApplicationGatewayConfiguration.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: RedirectUris
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/destroy-02-RedirectUris.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: ServiceBusWindowsFirewallRule
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/destroy-03-ServiceBusWindowsFirewallRule.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
+
+                - task: AzureCLI@2
+                  name: DeleteEmptyStateFile
+                  inputs:
+                    azureSubscription: $(AZURE_SUBSCRIPTION_NAME)
+                    scriptType: "pscore"
+                    scriptLocation: "scriptPath"
+                    scriptPath: "./infrastructure/terraform/root/cluster/_scripts/destroy-04-DeleteEmptyStateFile.ps1"
+                    workingDirectory: ./infrastructure/terraform/root/cluster/_scripts
+                    arguments: "$(ENVIRONMENT) $(VERSION)"
